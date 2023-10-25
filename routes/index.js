@@ -22,11 +22,18 @@ router.get("/", function (req, res, next) {
 /* GET message page. */
 router.get("/new", function (req, res, next) {
   res.render("form", { title: "Form" });
+  console.log(req.url);
 });
 
 /* GET message page. */
-router.get("/new", function (req, res, next) {
-  res.render("form", { title: "Form" });
+router.post("/new", function (req, res, next) {
+  messages.push({
+    text: req.body.msg,
+    user: req.body.name,
+    added: new Date(),
+  });
+  console.log("data received");
+  res.render("index", { title: "Mini Messageboard", messages: messages });
 });
 
 module.exports = router;

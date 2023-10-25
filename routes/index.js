@@ -22,7 +22,6 @@ router.get("/", function (req, res, next) {
 /* GET message page. */
 router.get("/new", function (req, res, next) {
   res.render("form", { title: "Form" });
-  console.log(req.url);
 });
 
 /* GET message page. */
@@ -32,8 +31,7 @@ router.post("/new", function (req, res, next) {
     user: req.body.name,
     added: new Date(),
   });
-  console.log("data received");
-  res.render("index", { title: "Mini Messageboard", messages: messages });
+  res.redirect("/");
 });
 
 module.exports = router;
